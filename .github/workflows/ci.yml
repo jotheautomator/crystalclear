@@ -28,11 +28,11 @@ jobs:
       neo4j:
         image: neo4j:5-community
         env:
-          NEO4J_AUTH: neo4j/test
+          NEO4J_AUTH: neo4j/testpassword
         ports:
           - 7687:7687
         options: >-
-          --health-cmd "cypher-shell -u neo4j -p test 'RETURN 1'"
+          --health-cmd "cypher-shell -u neo4j -p testpassword 'RETURN 1'"
           --health-interval 10s
           --health-timeout 10s
           --health-retries 5
@@ -67,7 +67,7 @@ jobs:
           DATABASE_URL: postgresql+asyncpg://crystalclear:test@localhost:5432/crystalclear_test
           NEO4J_URI: bolt://localhost:7687
           NEO4J_USER: neo4j
-          NEO4J_PASSWORD: test
+          NEO4J_PASSWORD: testpassword
           JWT_SECRET: test-secret
         run: pytest --cov=app --cov-report=term-missing --cov-fail-under=80
 
