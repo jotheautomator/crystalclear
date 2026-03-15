@@ -1,6 +1,6 @@
 """CrystalClear — Political transparency network analysis platform."""
-from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
+from collections.abc import AsyncGenerator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
