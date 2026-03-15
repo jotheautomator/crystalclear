@@ -77,4 +77,4 @@ See `knowledge-base/architecture/system-overview.md` for the full architecture d
 
 ## License
 
-This project is developed as part of the Integrative Project course at the University of Porto.
+This project is developed as part of the Integrative Project course at the Instituto Politécnico do Porto - Instituto Superior de Engenharia do Porto.
