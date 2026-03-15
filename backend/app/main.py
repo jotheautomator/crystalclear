@@ -6,8 +6,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.core.database import init_postgres, close_postgres
-from app.core.neo4j import init_neo4j, close_neo4j
+from app.core.database import close_postgres, init_postgres
+from app.core.neo4j import close_neo4j, init_neo4j
 
 
 @asynccontextmanager
