@@ -19,7 +19,7 @@ class CurrentUser:
 
 
 async def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(security_scheme),
+    credentials: HTTPAuthorizationCredentials = Depends(security_scheme),  # noqa: B008
 ) -> CurrentUser:
     """Extract and validate the current user from the JWT token."""
     payload = decode_access_token(credentials.credentials)
@@ -31,23 +31,19 @@ async def get_current_user(
     try:
         user_id = UUID(payload["sub"])
         role = payload["role"]
-    except (KeyError, ValueError):
+    except (KeyError, ValueError) as err:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token payload",
-        )
+        ) from err
     return CurrentUser(id=user_id, role=role)
 
 
 def require_role(*allowed_roles: str):
-    """Dependency factory that restricts access to specific roles.
-
-    Usage:
-        @router.get("/admin-only", dependencies=[Depends(require_role("ADMIN"))])
-    """
+    """Dependency factory that restricts access to specific roles."""
 
     async def role_checker(
-        current_user: CurrentUser = Depends(get_current_user),
+        current_user: CurrentUser = Depends(get_current_user),  # noqa: B008
     ) -> CurrentUser:
         if current_user.role not in allowed_roles:
             raise HTTPException(

@@ -1,6 +1,6 @@
 """Neo4j driver connection management."""
 
-from neo4j import AsyncGraphDatabase, AsyncDriver
+from neo4j import AsyncDriver, AsyncGraphDatabase
 
 from app.core.config import settings
 
