@@ -1,12 +1,12 @@
 """FastAPI dependency injection functions."""
 
+from collections.abc import Callable
 from uuid import UUID
 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from app.core.security import decode_access_token
-from collections.abc import Callable
 
 security_scheme = HTTPBearer()
 
