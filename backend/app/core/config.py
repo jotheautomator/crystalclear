@@ -7,7 +7,9 @@ class Settings(BaseSettings):
     """Application settings."""
 
     # PostgreSQL
-    DATABASE_URL: str = "postgresql+asyncpg://crystalclear:crystalclear_dev@localhost:5432/crystalclear"
+    DATABASE_URL: str = (
+        "postgresql+asyncpg://crystalclear:crystalclear_dev@localhost:5432/crystalclear"
+    )
 
     # Neo4j
     NEO4J_URI: str = "bolt://localhost:7687"
