@@ -6,6 +6,7 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from app.core.security import decode_access_token
+from collections.abc import Callable
 
 security_scheme = HTTPBearer()
 
@@ -39,7 +40,7 @@ async def get_current_user(
     return CurrentUser(id=user_id, role=role)
 
 
-def require_role(*allowed_roles: str):
+def require_role(*allowed_roles: str) -> Callable:
     """Dependency factory that restricts access to specific roles."""
 
     async def role_checker(
